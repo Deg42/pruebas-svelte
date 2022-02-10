@@ -1,0 +1,1 @@
+<h1>INICIO: App de Artículos y Clientes</h1>

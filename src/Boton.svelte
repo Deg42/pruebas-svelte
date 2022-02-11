@@ -3,6 +3,7 @@
 
     export let tipo = "insertar";
     export let coleccion = "articulos";
+    export let documento = {};
 
     let URL = getContext("URL");
 
@@ -12,7 +13,11 @@
 
     function insertar() {}
     function modificar() {}
-    function eliminar() {}
+    function eliminar() {
+        fetch(url + documento._id, { method: "DELETE" })
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+    }
 
     onMount(() => {
         switch (tipo) {

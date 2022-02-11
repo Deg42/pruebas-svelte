@@ -29,7 +29,7 @@ $: datos = busqueda
 
 {#each datos as articulo}
     <Articulo articulo = {articulo} >
-       <Boton tipo="modificar" coleccion="articulos"/>
-       <Boton tipo="eliminar" coleccion="articulos"/>
+       <Boton tipo="modificar" coleccion="articulos" documento={articulo}/>
+       <Boton tipo="eliminar" coleccion="articulos" documento={articulo}/>
     </Articulo>
 {/each}

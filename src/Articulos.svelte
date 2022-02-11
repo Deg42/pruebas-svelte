@@ -3,6 +3,7 @@
     import { jsonData } from "./store";
     import Articulo from "./Articulo.svelte";
     import Buscar from "./Buscar.svelte";
+    import Boton from "./Boton.svelte";
 
     const URL = getContext("URL");
     let busqueda = "";
@@ -22,7 +23,13 @@ $: datos = busqueda
 <h1>ARTICULOS</h1>
 
 <Buscar bind:busqueda />
+<Articulo>
+<Boton tipo="insertar" coleccion="articulos"/>
+</Articulo>
 
 {#each datos as articulo}
-    <Articulo {articulo} />
+    <Articulo articulo = {articulo} >
+       <Boton tipo="modificar" coleccion="articulos"/>
+       <Boton tipo="eliminar" coleccion="articulos"/>
+    </Articulo>
 {/each}

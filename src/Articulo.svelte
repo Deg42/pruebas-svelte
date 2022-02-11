@@ -3,6 +3,7 @@
 </script>
 
 <div>
-    <input type="text" value={articulo.nombre} />
-    <input type="text" value={articulo.precio} />
+    <input type="text" bind:value={articulo.nombre} />
+    <input type="text" bind:value={articulo.precio} />
+    <slot/>
 </div>

@@ -1,7 +1,8 @@
 <script>
     import { onMount, getContext } from "svelte";
+    import { jsonData } from "./store";
 
-    export let tipo = "insertar";
+    export let tipo = "";
     export let coleccion = "articulos";
     export let documento = {};
 
@@ -11,12 +12,28 @@
     let handler = () => {};
     let url = "";
 
-    function insertar() {}
+    function insertar () {  
+    fetch(URL.articulos, 
+    {
+        method : "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(documento)
+    })
+    .then( res => res.json() )
+    .then( data =>  $jsonData = [ ...$jsonData, data ] );
+ }
+
     function modificar() {}
+    
     function eliminar() {
         fetch(url + documento._id, { method: "DELETE" })
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then(
+                (data) =>
+                    ($jsonData = $jsonData.filter(
+                        (x) => x._id !== documento._id
+                    ))
+            );
     }
 
     onMount(() => {
